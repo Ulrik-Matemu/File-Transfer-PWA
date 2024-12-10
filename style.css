@@ -1,0 +1,63 @@
+:root {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --button-bg: #1f1f1f;
+    --button-hover: #333333;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+header {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+label {
+    background-color: var(--button-bg);
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+label:hover {
+    background-color: var(--button-hover);
+}
+
+button {
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--button-hover);
+}
+
+#qr-code {
+    margin-top: 1rem;
+}
