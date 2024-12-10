@@ -71,3 +71,38 @@ fileInput.addEventListener('change', () => {
         logStatus('File sent!');
     }
 });
+
+
+// Add this code to your main script.js file to handle custom installation UI
+let deferredPrompt;
+
+// Listen for the service worker message to show the install button
+navigator.serviceWorker.addEventListener('message', event => {
+  if (event.data.type === 'show-install-prompt') {
+    const installButton = document.getElementById('install-button');
+    if (installButton) {
+      installButton.style.display = 'block';
+      deferredPrompt = event.data;
+    }
+  }
+});
+
+// Handle install button click
+const installButton = document.getElementById('install-button');
+if (installButton) {
+  installButton.addEventListener('click', () => {
+    if (deferredPrompt) {
+      navigator.serviceWorker.controller.postMessage({ type: 'trigger-install' });
+    }
+  });
+}
+
+// Optional: Handle post-installation feedback
+navigator.serviceWorker.addEventListener('message', event => {
+  if (event.data.type === 'install-choice') {
+    const installOutcome = document.getElementById('install-outcome');
+    if (installOutcome) {
+      installOutcome.textContent = `User chose: ${event.data.outcome}`;
+    }
+  }
+});
